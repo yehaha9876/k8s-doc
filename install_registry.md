@@ -36,11 +36,7 @@ cp certs/domain.crt /etc/docker/certs.d/registry.gzky.com/
 192.168.3.63 registry.gzky.com
 
 登陆
-docker login mydockerhub.com
-
-#k8s registroy:
-参考文档：
-https://hub.docker.com/r/solsson/kube-registry-proxy/
+docker login registry.gzky.com
 
 创建成功后：
 在本地环境加入json 项：
@@ -52,4 +48,8 @@ vi /etc/docker/daemon.json
 使用：
 docker tag 224765a6bdbe 192.168.3.60:5000/openjdk
 docker push 192.168.3.60:5000/openjdk
+
+#k8s registroy:
+参考文档：
+https://hub.docker.com/r/solsson/kube-registry-proxy/
 
