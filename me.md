@@ -94,6 +94,18 @@ run:
 yum -y install google-chrome-stable
 ```
 
+* Install go
+
+mkdir -p $HOME/.go
+```
+cat >>$HOME/.bash_profile<<EOF
+export GOROOT=/usr/lib/golang
+export GOPATH=\$HOME/.go
+export PATH=\$PATH:\$GOROOT/bin
+EOF
+```
+source $HOME/.bash_profile
+go env
 
 * yum update vs yum upgrade
 
@@ -101,3 +113,6 @@ repo version 6.1 6.7, update will modify config and update kernal
 
 update only in version 6.1 to install new soft
 
+
+# python aliyun 源
+pip install -r /locust-tasks/requirements.txt -i http://pypi.douban.com/simple --trusted-host pypi.douban.com

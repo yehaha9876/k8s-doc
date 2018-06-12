@@ -1,0 +1,109 @@
+查看网卡是否启动：
+cat /etc/sysconfig/network-scripts/ifcfg-eth0
+
+ping www.baidu.com
+
+yum install vim net-tools ifconfig wget
+
+vim /etc/resolv.conf
+```
+nameserver 8.8.8.8
+```
+
+ping www.baidu.com
+systemctl status firewalld
+systemctl stop firewalld
+systemctl disable firewalld
+setenforce 0
+vim /etc/selinux/config
+yum install telnet
+ssh-keygen
+ssh-copy-id root@192.168.3.60
+ssh root@192.168.3.60
+ssh-copy-id root@192.168.3.61
+ssh-copy-id root@192.168.3.62
+ssh-copy-id root@192.168.3.63
+ssh root@192.168.3.63
+
+vi /etc/hosts
+
+swapoff -a
+vi /etc/fstab
+
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+vim /etc/yum.repos.d/CentOS-Base.repo
+:%s#$releasever#7#g
+
+sudo yum makecache fast
+
+参考：https://opsx.alibaba.com/mirror
+
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+
+sudo yum install -y https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-selinux-17.03.2.ce-1.el7.centos.noarch.rpm
+sudo yum install -y docker-ce-17.03.0.ce
+
+OR
+
+sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+sudo yum makecache fast
+sudo yum -y install docker-ce
+
+
+
+yum makecache
+
+
+docker -v
+mkdir /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://o5k8f1d0.mirror.aliyuncs.com"]
+}
+EOF
+
+systemctl enable docker
+sudo systemctl daemon-reload
+sudo service docker start
+
+
+yum -y install golang
+ 
+cat >> /etc/yum.repos.d/kubernetes.repo <<EOF
+[kubernetes]
+name=Kubernetes
+baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
+enabled=1
+gpgcheck=0
+EOF
+
+yum makecache fast
+
+yum -y install epel-release
+yum list kubectl -- showduplicates
+
+yum -y install kubelet kubeadm kubectl kubernetes-cni
+
+docker info | grep -i cgroup
+cat /etc/systemd/system/kubelet.service.d/10-kubeadm.conf | grep cgroup-driver
+
+sed -i "s/cgroup-driver=systemd/cgroup-driver=cgroupfs/g" /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+
+
+systemctl enable kubelet.service
+
+kubeadm join 192.168.3.60:6443 --token 2cr67q.s9atblfdweltiq7n --discovery-token-ca-cert-hash sha256:886629bd805878749829c6fafe3713b3f77257e70a732b2de93ba14f786801dd
+
+
+```
+Failed to connect to API Server "192.168.3.60:6443": token id "dddi2r" is invalid for this cluster or it has expired. Use "kubeadm token create" on the master node to creating a new valid token
+``
+
+on master
+kubeadm token create
+
+openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'
+
+
+kubctl get nodes
+
