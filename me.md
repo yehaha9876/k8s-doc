@@ -116,3 +116,12 @@ update only in version 6.1 to install new soft
 
 # python aliyun 源
 pip install -r /locust-tasks/requirements.txt -i http://pypi.douban.com/simple --trusted-host pypi.douban.com
+
+
+* base64 解码
+
+printf "abcdef" | base64
+YWJjZGVm
+ 
+printf "YWJjZGVm" | base64 -d
+abcdef
