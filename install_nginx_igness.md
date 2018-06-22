@@ -2,7 +2,13 @@
 这个东西就监听api server
 都会在ngixn config中增加转发规则
 cat /etc/nginx/nginx.conf
+## 官网安装
+https://github.com/kubernetes/ingress-nginx/blob/master/docs/deploy/index.md
 
+nginxinc 安装
+https://github.com/nginxinc/kubernetes-ingress/blob/master/install/service/nodeport.yaml
+
+## HELM 安装
 安装过程
 ```
 helm fetch stable/nginx-ingress 
