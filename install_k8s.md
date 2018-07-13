@@ -59,7 +59,10 @@ https://blog.csdn.net/dog250/article/details/8654487
 关闭swap
 
 
-
+错误：
+unable to check if the container runtime at "/var/run/dockershim.sock" is running: exit status 1
+解决方法:
+kubeadm init --ignore-preflight-errors=cri
 
 
 

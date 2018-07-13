@@ -151,6 +151,10 @@ registry-mirror 输入你的镜像地址
 
 
 
+## 配置docker日志分割
 
+--log-driver=json-file --log-opt=max-size=10m --log-opt=max-file=5. 
+See Configure and troubleshoot the Docker daemon for more details
+https://docs.docker.com/engine/admin/
 
 

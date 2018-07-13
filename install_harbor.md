@@ -21,6 +21,9 @@ wget https://github.com/vmware/harbor/archive/v1.4.1.tar.gz
 ### 停止
 docker-compose down
 
+### 启动
+docker-compose up -d
+
 默认用户名密码
 admin/Harbor12345
 

@@ -82,17 +82,18 @@ yum makecache fast
 yum -y install epel-release
 yum list kubectl -- showduplicates
 
-yum -y install kubelet kubeadm kubectl kubernetes-cni
+yum -y install kubelet kubeadm kubectl
 
 docker info | grep -i cgroup
 cat /etc/systemd/system/kubelet.service.d/10-kubeadm.conf | grep cgroup-driver
 
 sed -i "s/cgroup-driver=systemd/cgroup-driver=cgroupfs/g" /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
-
+注意：1.11.0配置文件在这里
+/var/lib/kubelet/kubeadm-flags.env
 
 systemctl enable kubelet.service
 
-kubeadm join 192.168.3.60:6443 --token 2cr67q.s9atblfdweltiq7n --discovery-token-ca-cert-hash sha256:886629bd805878749829c6fafe3713b3f77257e70a732b2de93ba14f786801dd
+kubeadm join 192.168.3.99:6443 --token f2ae8o.bi8wt89ox01iu1co --discovery-token-ca-cert-hash sha256:b7e893aecd5b73cc96545ae7094f3d1df5d8d1a8840a59b9ffc3a2746bcdfc92
 
 
 ```

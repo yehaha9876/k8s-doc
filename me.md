@@ -125,3 +125,18 @@ YWJjZGVm
  
 printf "YWJjZGVm" | base64 -d
 abcdef
+
+# 内网测速
+安装yum install iperf
+
+server段启动： iperf -s
+
+client端启动： iperf -c 192.168.3.62 -i 1
+
+# 抓包
+tcpdump -nn -i 网卡名 -e
+
+# 设置网络
+ifconfig eth0 192.168.5.40 netmask 255.255.255.0
+设置网关
+route add default gw 192.168.5.1
