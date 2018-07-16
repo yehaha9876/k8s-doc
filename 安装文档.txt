@@ -108,3 +108,10 @@ openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outfor
 
 kubctl get nodes
 
+
+修改配置文件：开启token访问模式
+vi /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+确保以下参数：
+Environment="KUBELET_AUTHZ_ARGS=--authentication-token-webhook=true --authorization-mode=Webhook --client-ca-file=/etc/kubernetes/pki/ca.crt"
+
+
