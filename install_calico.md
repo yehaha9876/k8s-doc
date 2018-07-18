@@ -1,3 +1,5 @@
+注意： 安装calico时候一定要修改配置文件中的podip范围
+
 Allow Access using a NetworkPolicy
 增加pod访问策略
 

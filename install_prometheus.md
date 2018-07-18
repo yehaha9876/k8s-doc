@@ -8,6 +8,8 @@ externalUrl: http://prometheus.gzky.com
 ```
 
 2. 修改alertmanager-secret.yaml配置通知方式
+kubectl delete secret alertmanager-main -n monitoring
+kubectl create secret generic alertmanager-main -n monitoring --from-file=./alertmanager.config
 
 3. 增加job 仿照写ServiceMonitor
 
