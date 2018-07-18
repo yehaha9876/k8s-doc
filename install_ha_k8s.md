@@ -53,11 +53,14 @@ stream {
         }
 }
 ```
+可以修改hostname
+
 
 # 主master初始化程序
 kubeadm init --config=kubeadm-init.yaml
 
 kubeadm join 192.168.3.60:6443 --token 7f276c.0741d82a5337f526 --discovery-token-ca-cert-hash sha256:f5a90bc04c7ee7ea1a7aac0c3d03bd17c2eb0c0f391a61d135bc5c40ddea422f  
+
 
 配置kubelet
 ```
@@ -67,6 +70,8 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 kubctl get pods
+
+## 这里需要先创建calico网络
 
 ## 复制master证书到其他master
 scp -r /etc/kubernetes/pki master2:/etc/kubernetes/

@@ -65,4 +65,9 @@ unable to check if the container runtime at "/var/run/dockershim.sock" is runnin
 kubeadm init --ignore-preflight-errors=cri
 
 
+错误
+unable to check if the container runtime at "/var/run/dockershim.sock" is running: exit status 1
 
+```
+join 加入参数 --ignore-preflight-errors cri
+```
