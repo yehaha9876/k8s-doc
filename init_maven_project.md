@@ -22,6 +22,15 @@ modify pom.yml
 
 ```
 
+配置数据库连接
+vi src/main/resources/application.properties 
+```
+spring.datasource.url=jdbc:postgresql://pgset:5432/test # 注意这里的pgset:5432对应到k8s service中的server name 和 port
+spring.datasource.username=user1
+spring.datasource.password=123
+
+```
+
 运行：
 ```
 mvn clean package docker:build
@@ -39,7 +48,9 @@ docker run -p 8080:8080 -t xxx/xxx
 访问地址：
 http://127.0.0.1:8080/demo-test/person/list-all
 
-## docker pg
+## 配置 pg
+安装pg后，配置项目
+
 
 
 文档地址：
